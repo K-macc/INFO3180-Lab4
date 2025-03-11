@@ -12,7 +12,16 @@ from werkzeug.security import check_password_hash
 ###
 # Routing for your application.
 ###
+def get_uploaded_images():
+    rootdir = os.getcwd()    
+    file_list = []
 
+    for subdir, dirs, files in os.walk(rootdir + r'\uploads'):
+        for file in files:
+            file_list.append(file)
+    return file_list
+       
+       
 @app.route('/')
 def home():
     """Render website's home page."""
@@ -23,6 +32,15 @@ def home():
 def about():
     """Render the website's about page."""
     return render_template('about.html', name="Mary Jane")
+
+@app.route('/uploads/<filename>')
+def get_image(filename):
+    return send_from_directory(os.path.join(os.getcwd(), app.config['UPLOAD_FOLDER']), filename)
+
+@app.route('/files')
+def files():
+    images = get_uploaded_images()
+    return render_template('files.html', images=images)
 
 
 @app.route('/upload', methods=['POST', 'GET'])
