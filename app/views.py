@@ -82,17 +82,10 @@ def login():
         # Then store the result of that query to a `user` variable so it can be
         # passed to the login_user() method below.
         user = db.session.execute(db.select(UserProfile).filter_by(username=username)).scalar()
-        sess_username = user.username
-        sess_password = user.password
-        if user and check_password_hash(sess_password, password):
+        
+        if user and check_password_hash(user.password, password):
             flash('Logged in successfully.', 'success')
             login_user(user)
-           
-       
-        # Gets user id, load into session
-        
-
-        # Remember to flash a message to the user
             return redirect(url_for("upload"))  # The user should be redirected to the upload form instead
         else:
             flash('Username or Password is incorrect.', 'danger') 
