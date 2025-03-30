@@ -1,10 +1,11 @@
 {% extends 'base.html' %}
 
+{% block main_class %}custom-main{% endblock %}
 
 {% block main %}
-<div class="image-list">
+<div class="image-list" style="margin-left: 0px;">
     {%for image in images%}
-        <div class = "image-item"><img src="{{ url_for('get_image', filename=image) }}" alt="{{ image }}" width="450"></div>
+        <div class = "image-item" style="margin-left: 5px;"><img src="{{ url_for('get_image', filename=image) }}" alt="{{ image }}" width="450"></div>
     {% endfor %}
 </div>
 

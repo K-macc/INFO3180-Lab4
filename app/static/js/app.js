@@ -8,5 +8,5 @@ document.addEventListener('DOMContentLoaded', function() {
         alert.style.opacity = 0;
         setTimeout(() => alert.remove(), 500);  // Remove after transition
       });
-    }, 5000); // 5 seconds timeout (you can adjust this duration)
+    }, 3000); // 3 seconds timeout (you can adjust this duration)
   });

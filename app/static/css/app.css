@@ -24,7 +24,11 @@ body {
     grid-template-columns: repeat(3,1fr);        
     gap: 30px 40px; /* Space between the items */
     width: 650px;              
-    margin-left: 0px;
+    margin-left: 0px !important;
+}
+
+.custom-main {
+    margin-left: 50px;
 }
 
 
@@ -63,3 +67,4 @@ body {
     background-color: #dc3545;
 }
 
+.container {}
